@@ -304,4 +304,3 @@ class OpenSSH_Conan(ConanFile):
         self.cpp_info.names["cmake_find_package"] = "OpenSSH"
         self.cpp_info.names["cmake_find_package_multi"] = "OpenSSH"
 
-

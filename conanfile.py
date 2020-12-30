@@ -13,9 +13,10 @@ class OpenSSH_Conan(ConanFile):
     version = "8.4p1"
     settings = "os", "compiler", "arch", "build_type"
     homepage = "https://github.com/openssh/openssh-portable"
-    license = "BSD"
+    license = "Conanfile: MIT, OpenSSH itself: BSD."
     topics = ("conan", "openssh", "ssl", "tls", "encryption", "security")
     description = "A toolkit for Secure Shell remote access, transport and security"
+    url = 'https://travis-ci.com/github/prismskylabs/openssh_pkg'
     options = {
             #"fPIC": [True, False],
               }

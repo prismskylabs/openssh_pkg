@@ -1,0 +1,32 @@
+dist: bionic
+sudo: required
+language: minimal
+
+jobs:
+  include:
+      #    - env:
+      #      - PSL_TRAVIS_CI=1
+      #      - PKG_PLATFORM=linux-amd64
+    - env:
+      - PSL_TRAVIS_CI=1
+      - PKG_PLATFORM=linux-armv7hf
+    - env:
+      - PSL_TRAVIS_CI=1
+      - PKG_PLATFORM=linux-aarch64
+
+# Handle git submodules yourself
+#  https://stackoverflow.com/questions/15674064/how-to-fix-a-permission-denied-publickey-error-for-a-git-submodule-update-in-t
+git:
+    submodules: false
+    # Use sed to replace the SSH URL with the public URL, then initialize submodules
+before_install:
+    - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+    - git submodule update --init --recursive
+install:
+  - ./src/scripts/provision.sh
+
+before_script:
+  - touch before-script
+script:
+  - ./build.sh
+  - ./upload.sh

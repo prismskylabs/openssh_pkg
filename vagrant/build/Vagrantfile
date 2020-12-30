@@ -1,0 +1,21 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+
+# Configure base Vagrant vm properties described in boostrap repo
+# If they do not work for you, you can override further below
+base_vagrantfile = File.dirname(__FILE__) + "/../../src/external/edge_build_bootstrap/vagrant/Vagrantfile.base"
+load base_vagrantfile
+
+Vagrant.configure("2") do |config|
+    config.vm.network "private_network", type: "dhcp"
+    config.vm.synced_folder File.dirname(__FILE__) + "/../../", "/home/vagrant/openssh_pkg", nfs: true
+
+#    config.vm.provision "shell" do |s|
+#         s.inline = "bash -c '. /home/vagrant/zlib_pkg/edge_build_base/src/scripts/setup_routines.sh ; base_setup_provision'"
+#         s.privileged = true
+#    end
+
+
+end
+

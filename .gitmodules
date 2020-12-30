@@ -1,0 +1,3 @@
+[submodule "src/external/edge_build_bootstrap"]
+	path = src/external/edge_build_bootstrap
+	url = git@github.com:prismskylabs/edge_build_bootstrap

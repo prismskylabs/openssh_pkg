@@ -231,7 +231,7 @@ class OpenSSH_Conan(ConanFile):
             args = " ".join(self._configure_args)
             self.output.info(self._configure_args)
 
-            self.run(' ./configure {args}'.format(perl=self._perl, args=args), win_bash=self._win_bash)
+            self.run('set;  ./configure {args}'.format(perl=self._perl, args=args), win_bash=self._win_bash)
 
             #self._patch_install_name()
 
@@ -260,8 +260,13 @@ class OpenSSH_Conan(ConanFile):
         return "cc"
 
     def build(self):
+
+        #autotools = AutoToolsBuildEnvironment(self)
+        #autotools.configure()
+        #autotools.make()
+
         with tools.vcvars(self.settings) if self._use_nmake else tools.no_op():
-            env_vars = {"PERL": self._perl}
+            env_vars = self._get_env_build().vars #{"PERL": self._perl}
             if self.settings.compiler == "apple-clang":
                 xcrun = tools.XCRun(self.settings)
                 env_vars["CROSS_SDK"] = os.path.basename(xcrun.sdk_path)

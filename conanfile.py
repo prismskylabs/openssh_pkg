@@ -310,4 +310,4 @@ class OpenSSH_Conan(ConanFile):
     def package_info(self):
         self.cpp_info.names["cmake_find_package"] = "OpenSSH"
         self.cpp_info.names["cmake_find_package_multi"] = "OpenSSH"
-
+        self.cpp_info.bindirs = [ "bin" ]

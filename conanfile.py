@@ -184,6 +184,8 @@ class OpenSSH_Conan(ConanFile):
           "--prefix=\"%s\"" % prefix,
           "--with-zlib",
           "--with-openssl",
+          "--disable-libutil",
+          "--without-libcrypt",
           "--disable-strip",
         ]
 

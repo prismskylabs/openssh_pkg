@@ -304,8 +304,10 @@ class OpenSSH_Conan(ConanFile):
         with tools.vcvars(self.settings) if self._use_nmake else tools.no_op():
             self._make_install()
         self.copy('ssh', dst='bin', src='/usr/local/packages/prismconnect/bin')
+        self.copy('ssh-keygen', dst='bin', src='/usr/local/packages/prismconnect/bin')
+
 
     def package_info(self):
         self.cpp_info.names["cmake_find_package"] = "OpenSSH"
         self.cpp_info.names["cmake_find_package_multi"] = "OpenSSH"
-
+        self.cpp_info.bindirs = [ "bin" ]

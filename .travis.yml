@@ -4,12 +4,15 @@ language: minimal
 
 jobs:
   include:
-      #    - env:
-      #      - PSL_TRAVIS_CI=1
-      #      - PKG_PLATFORM=linux-amd64
+    - env:
+      - PSL_TRAVIS_CI=1
+      - PKG_PLATFORM=linux-amd64
     - env:
       - PSL_TRAVIS_CI=1
       - PKG_PLATFORM=linux-armv7hf
+    - env:
+      - PSL_TRAVIS_CI=1
+      - PKG_PLATFORM=linux-armv7hf-gcc92
     - env:
       - PSL_TRAVIS_CI=1
       - PKG_PLATFORM=linux-aarch64
@@ -28,5 +31,4 @@ install:
 before_script:
   - touch before-script
 script:
-  - ./build.sh
-  - ./upload.sh
+  - ./build.sh &&  ./upload.sh && echo "Build successful" || echo "Build failed"

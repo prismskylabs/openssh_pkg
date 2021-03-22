@@ -31,4 +31,4 @@ install:
 before_script:
   - touch before-script
 script:
-  - ./build.sh &&  ./upload.sh && echo "Build successful" || echo "Build failed"
+  - ./build.sh &&  ./upload.sh && echo "Build successful" || (echo "Build failed" && false)

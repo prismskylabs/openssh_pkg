@@ -305,6 +305,7 @@ class OpenSSH_Conan(ConanFile):
             self._make_install()
         self.copy('ssh', dst='bin', src='/usr/local/packages/prismconnect/bin')
         self.copy('ssh-keygen', dst='bin', src='/usr/local/packages/prismconnect/bin')
+        self.copy('sshd', dst='bin', src='/usr/local/packages/prismconnect/bin')
 
 
     def package_info(self):
